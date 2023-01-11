@@ -16,3 +16,13 @@ services:
       - hub
     environment:
       - HUB_HOST=hub
+  bdd:
+    image: vinsdocker/selenium-docker-bdd
+    depends_on:
+      - chrome
+    environment:
+      - HUB_HOST=hub
+      - BROWSER=chrome
+      - CUCMBER_OPTIONS=classpath:features
+    volumes:
+      - ./output:/user/share/udemy/target/cucmber-reports
